@@ -4,9 +4,12 @@ h1{
 article p{
     text-align: center;
 }
-.btn-primary{
+#startBtn{
     margin-left: 45%;
 }
 .hidden{
     display: none;
+}
+.answerBtn{
+    margin-bottom: 10px;
 }
