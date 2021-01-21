@@ -7,3 +7,6 @@ article p{
 .btn-primary{
     margin-left: 45%;
 }
+.hidden{
+    display: none;
+}
