@@ -89,7 +89,7 @@ function compareAnswers(e) {
     if (el.matches("button")) {
         // Correct Answer
         console.log("going through compareAnswers");
-        if (element.textContent === questions[questionIndex].answer) {
+        if (el.textContent === questions[questionIndex].answer) {
             console.log("Getting answer from obj: " + questions[questionIndex].answer);
             score++;
             console.log("Score works, score = " + score);
@@ -99,7 +99,7 @@ function compareAnswers(e) {
         }
         // Incorrect Answer
         else {
-            timer -= 5;
+            timerStart -= 5;
             messageDisplay.textContent = "Incorrect! 5 seconds deducted!"
             var hr = document.createElement("hr");
             messageDisplay.prepend(hr);
@@ -109,10 +109,12 @@ function compareAnswers(e) {
     questionIndex++;
 
     if (questionIndex >= questions.length || timer === 0) {
+        // Calls function to end game
         alert("Game Over!");
     }
     else {
         generateQuestion(questionIndex);
     }
-
 }
+
+// End game function
