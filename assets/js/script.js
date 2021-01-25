@@ -2,7 +2,7 @@
 var container = document.querySelector(".container");
 var timer = document.querySelector("#timer");
 var h1Element = document.querySelector("h1");
-var questionDisplay = document.querySelector("#questionDisplay");
+var contentDisplay = document.querySelector("#contentDisplay");
 var pTag = document.querySelector("p");
 var answerDisplay = document.querySelector("#answerDisplay");
 var startBtn = document.querySelector("#startBtn");
@@ -12,6 +12,7 @@ var messageDisplay = document.querySelector("#messageDisplay");
 var timerStart = 35; // reset to 76 when complete
 var questionIndex = 0;
 var score = 0;
+var timerInterval;
 
 // Questions & Answers Object
 var questions = [
@@ -35,7 +36,7 @@ var questions = [
 // Timer Function
 function setTime() {
     // Sets interval in variable
-    var timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         timerStart--;
         timer.innerHTML = timerStart;
 
@@ -43,7 +44,7 @@ function setTime() {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
             // Calls function to end game
-            alert("Game Over!");
+            endGame();
         }
 
     }, 1000);
@@ -108,9 +109,9 @@ function compareAnswers(e) {
     // Increase questionIndex for next question
     questionIndex++;
 
-    if (questionIndex >= questions.length || timer === 0) {
+    if (questionIndex >= questions.length) {
         // Calls function to end game
-        alert("Game Over!");
+        endGame();
     }
     else {
         generateQuestion(questionIndex);
@@ -118,3 +119,14 @@ function compareAnswers(e) {
 }
 
 // End game function
+function endGame() {
+    // finalScore calculated from correct answers + time left
+    var finalScore = parseInt(score + timerStart);
+    h1Element.textContent = "Game Over!";
+    contentDisplay.textContent = "Congrats! Your score is: " + finalScore;
+
+    // Clear
+    messageDisplay.textContent = "";
+    clearInterval(timerInterval);
+    timer.innerHTML = "0";
+}
