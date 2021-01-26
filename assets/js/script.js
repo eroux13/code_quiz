@@ -12,6 +12,7 @@ var messageDisplay = document.querySelector("#messageDisplay");
 var timerStart = 35; // reset to 76 when complete
 var questionIndex = 0;
 var score = 0;
+// Create global varibale for timerInterval to access clearInterval
 var timerInterval;
 
 // Questions & Answers Object
@@ -125,8 +126,47 @@ function endGame() {
     h1Element.textContent = "Game Over!";
     contentDisplay.textContent = "Congrats! Your score is: " + finalScore;
 
-    // Clear
+    // Create elements for user to submit highscore
+    var br = document.createElement("br");
+    contentDisplay.append(br);
+    var initialsLabel = document.createElement("label");
+    initialsLabel.textContent = "Enter Initials: ";
+    contentDisplay.append(initialsLabel);
+    var initialsInputBox = document.createElement("input");
+    initialsInputBox.setAttribute("type", "text");
+    contentDisplay.append(initialsInputBox);
+    contentDisplay.append(br);
+    var submitBtn = document.createElement("button");
+    submitBtn.setAttribute("class", "btn btn-primary");
+    submitBtn.setAttribute("type", "submit");
+    submitBtn.setAttribute("id", "submitBtn");
+    submitBtn.textContent = "Submit"
+    contentDisplay.append(submitBtn);
+
+    // Event listener for highscore submit button
+    submitBtn.addEventListener("click", function (e) {
+        e.preventDefault
+        var initialsInput = initialsInputBox.value;
+        var saveFinalScore = {
+            initials: initialsInput,
+            score: finalScore
+        };
+        var displayScores = localStorage.getItem("displayScores");
+        if (displayScores === null) {
+            displayScores = [];
+        }
+        else {
+            displayScores = JSON.parse(displayScores);
+        }
+        displayScores.push(saveFinalScore);
+        var submitScore = JSON.stringify(displayScores);
+        localStorage.setItem("displayScores", submitScore);
+        // Redirect to highscores page
+        window.location.replace("./highScores.html");
+    })
+
+    // Clear message and timer
     messageDisplay.textContent = "";
-    clearInterval(timerInterval);
     timer.innerHTML = "0";
+    clearInterval(timerInterval);
 }
