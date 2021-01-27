@@ -1,7 +1,7 @@
 # Code Quiz
-![HTML](https://img.shields.io/badge/HTML-27.8%25-red)
-![CSS](https://img.shields.io/badge/CSS-2.8%25-purple)
-![JavaScript](https://img.shields.io/badge/JavaScript-69.4%25-yellow)
+![HTML](https://img.shields.io/badge/HTML-30.4%25-red)
+![CSS](https://img.shields.io/badge/CSS-4.2%25-purple)
+![JavaScript](https://img.shields.io/badge/JavaScript-65.4%25-yellow)
 
 ## Description
 
