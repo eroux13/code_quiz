@@ -21,3 +21,14 @@ article p{
 #highScoreDisplay {
     list-style-type: none;
 }
+.footer{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    line-height: 65px;
+    text-align: center;
+    border-top: 5px solid lightblue;
+    flex-shrink: 0;
+}
