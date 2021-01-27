@@ -59,7 +59,7 @@ var questions = [
     },
     {
         title: "The logical operator that represents 'and' is ___",
-        choices: ["===", "++", "&&", "||t"],
+        choices: ["===", "++", "&&", "||"],
         answer: "&&"
     },
     {
