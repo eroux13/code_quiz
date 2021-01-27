@@ -35,7 +35,7 @@ var questions = [
     {
         title: "How do we access a certain index in an array?",
         choices: ["array.index[i]", "array(i)", "array[i]", "[i]array"],
-        answer: "JavaScript"
+        answer: "array[i]"
     },
     {
         title: "A property of an object that is a function is called a __________",
