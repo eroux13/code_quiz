@@ -9,7 +9,7 @@ var startBtn = document.querySelector("#startBtn");
 var messageDisplay = document.querySelector("#messageDisplay");
 
 // Global Variables
-var timerStart = 35; // reset to 76 when complete
+var timerStart = 61;
 var questionIndex = 0;
 var score = 0;
 // Create global varibale for timerInterval to access clearInterval
@@ -28,9 +28,44 @@ var questions = [
         answer: "JavaScript"
     },
     {
-        title: "TEST QUESTION",
-        choices: ["A", "B", "C", "D"],
-        answer: "D"
+        title: "How do we link a JavaScript file to the HTML?",
+        choices: ["<img>", "<p>", "<link>", "<script>"],
+        answer: "<script>"
+    },
+    {
+        title: "How do we access a certain index in an array?",
+        choices: ["array.index[i]", "array(i)", "array[i]", "[i]array"],
+        answer: "JavaScript"
+    },
+    {
+        title: "A property of an object that is a function is called a __________",
+        choices: ["method", "string", "boolean", "href"],
+        answer: "method"
+    },
+    {
+        title: "The logical operator that represents 'or' is ___",
+        choices: ["&&", "||", "===", "OR"],
+        answer: "||"
+    },
+    {
+        title: "DOM stands for?",
+        choices: ["Desktop Oriented Mode", "Digital Ordinance Mode", "Display Object Management", "Document Object Model"],
+        answer: "Document Object Model"
+    },
+    {
+        title: "How many elements can you apply an 'ID' attribute to?",
+        choices: ["Unlimited", "One", "Five", "Ten"],
+        answer: "One"
+    },
+    {
+        title: "The logical operator that represents 'and' is ___",
+        choices: ["===", "++", "&&", "||t"],
+        answer: "&&"
+    },
+    {
+        title: "What is the current version of JavaScript?",
+        choices: ["ES5", "ES2", "ES7", "ES9"],
+        answer: "ES9"
     }
 ]
 
@@ -58,8 +93,6 @@ startBtn.addEventListener("click", function () {
     startBtn.setAttribute("class", "hidden");
     pTag.setAttribute("class", "hidden");
     generateQuestion(questionIndex);
-    // 
-    console.log("startBtn works");
 })
 
 // Display Question & Choices
@@ -80,8 +113,6 @@ function generateQuestion(questionIndex) {
         answerDisplay.append(br);
         // Add eventListener to user chocice button click
         userAnswerBtn.addEventListener("click", (compareAnswers));
-        // 
-        console.log("generateQuestion works");
     })
 }
 
@@ -96,6 +127,8 @@ function compareAnswers(e) {
             score++;
             console.log("Score works, score = " + score);
             messageDisplay.innerHTML = "Correct!";
+            messageDisplay.style.color = "Green";
+            messageDisplay.style.fontSize = "20px";
             var hr = document.createElement("hr");
             messageDisplay.prepend(hr);
         }
@@ -103,6 +136,8 @@ function compareAnswers(e) {
         else {
             timerStart -= 5;
             messageDisplay.textContent = "Incorrect! 5 seconds deducted!"
+            messageDisplay.style.color = "Red";
+            messageDisplay.style.fontSize = "20px";
             var hr = document.createElement("hr");
             messageDisplay.prepend(hr);
         }
@@ -121,23 +156,27 @@ function compareAnswers(e) {
 
 // End game function
 function endGame() {
+    // Clear message and timer
+    messageDisplay.textContent = "";
+    timer.innerHTML = "0";
+    clearInterval(timerInterval);
+
     // finalScore calculated from correct answers + time left
     var finalScore = parseInt(score + timerStart);
     h1Element.textContent = "Game Over!";
     contentDisplay.textContent = "Congrats! Your score is: " + finalScore;
+    contentDisplay.style.fontSize = "20px";
 
     // Create elements for user to submit highscore
-    var br = document.createElement("br");
-    contentDisplay.append(br);
-    var initialsLabel = document.createElement("label");
-    initialsLabel.textContent = "Enter Initials: ";
-    contentDisplay.append(initialsLabel);
+    var initialsPTag = document.createElement("p");
+    initialsPTag.textContent = "Enter Initials: ";
+    initialsPTag.setAttribute("class", "initialsPTag");
+    contentDisplay.append(initialsPTag);
     var initialsInputBox = document.createElement("input");
     initialsInputBox.setAttribute("type", "text");
     contentDisplay.append(initialsInputBox);
-    contentDisplay.append(br);
     var submitBtn = document.createElement("button");
-    submitBtn.setAttribute("class", "btn btn-primary");
+    submitBtn.setAttribute("class", "btn btn-primary submitBtn");
     submitBtn.setAttribute("type", "submit");
     submitBtn.setAttribute("id", "submitBtn");
     submitBtn.textContent = "Submit"
@@ -164,9 +203,4 @@ function endGame() {
         // Redirect to highscores page
         window.location.replace("./highScores.html");
     })
-
-    // Clear message and timer
-    messageDisplay.textContent = "";
-    timer.innerHTML = "0";
-    clearInterval(timerInterval);
 }
