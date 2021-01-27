@@ -14,7 +14,7 @@
 
 <body>
     <!-- NavBar -->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
         <div class="container-fluid">
             <a class="navbar-brand" href="./highScores.html">View Highscores</a>
             <span class="navbar-text">
@@ -35,8 +35,10 @@
                 <p>Try to answer the following code-related questions within the time limit. Keep in
                     mind
                     that incorrect
-                    answers will penalize your score/time by 10 seconds! The more time left on the clock when all
-                    questions are answered, the higher your score!
+                    answers will penalize your time by 5 seconds! The more time left on the clock when all
+                    questions are answered, the higher your score! Once you answer all the questions or the time runs
+                    out,
+                    the game will end and you can save your initials and score on the leaderboard!
                 </p>
                 <ul id="answerDisplay"></ul>
                 <button type="button" class="btn btn-primary" id="startBtn">Start Quiz</button>
@@ -46,6 +48,11 @@
             <article class="col" id="messageDisplay"></article>
         </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="background-color: #e3f2fd;">
+        <span class="text-muted">© Copyright 2020 EJ Roux</span>
+    </footer>
 
     <!-- Link JavaScript -->
     <script src="./assets/js/script.js"></script>
