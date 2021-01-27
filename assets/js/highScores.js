@@ -16,7 +16,8 @@ console.log(displayAllScores)
 if (displayAllScores !== null) {
     for (var i = 0; i < displayAllScores.length; i++) {
         var listScores = document.createElement("li");
-        listScores.textContent = displayAllScores[i].initials + " Score: " + displayAllScores[i].score;
+        listScores.textContent = displayAllScores[i].initials + " | Score: " + displayAllScores[i].score;
+        listScores.style.fontSize = "20px";
         highScoreDisplay.append(listScores);
     }
 }
